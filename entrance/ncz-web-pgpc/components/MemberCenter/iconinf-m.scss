@@ -1,0 +1,226 @@
+@use 'sass:list';
+
+$icon-styles: (
+  icon-info: (-5px, rgba(254, 235, 107, 0.35)),
+  icon-pwd: (-58px, rgba(87, 239, 235, 0.35)),
+  icon-secret: (-111px, rgba(219, 133, 253, 0.35)),
+  icon-bank: (-164px, rgba(100, 194, 253, 0.35)),
+  icon-moneypwd: (-217px, rgba(221, 205, 120, 0.35)),
+  icon-google: (-271px, rgba(255, 109, 124, 0.35)),
+  icon-phone: (-324px, rgba(219, 133, 253, 0.35)),
+  icon-realname: (-375px, rgba(255, 109, 124, 0.35)),
+  icon-vitualWallet: (-428px, rgba(254, 235, 107, 0.35)),
+  icon-eWallet: (-640px, rgba(254, 235, 107, 0.35))
+);
+
+@mixin icon-style($y, $shadow-color) {
+  background-position: -5px $y;
+  &.active {
+    background-position: -238px $y;
+    box-shadow: 0 7px 13px $shadow-color;
+    &:hover { background-position: -471px $y; }
+    // &:active { background-position: -709px $y !important; }
+    &:active { background-position: -709px $y; }
+  }
+}
+
+#mc_container.security-center .iconinf-m {
+  display: inline-block;
+  width: 39px;
+  height: 39px;
+  border-radius: 50%;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  background-image: url(@/assets/web_pgpc/iconinfo-m.png);
+  box-shadow: 0 7px 13px rgba(194, 194, 192, 0.35);
+
+  @each $name, $data in $icon-styles {
+    &.#{$name} {
+      @include icon-style(list.nth($data, 1), list.nth($data, 2));
+    }
+  }
+}
+
+
+// @mixin icon-style($y, $shadow-color: null) {
+//   background-position: -5px $y;
+//   &.active {
+//     background-position: -238px $y;
+//     @if $shadow-color {
+//       box-shadow: 0 7px 13px rgba($shadow-color, 0.35);
+//     }
+//     &:hover {
+//       background-position: -471px $y;
+//     }
+//     &:active {
+//       background-position: -709px $y !important;
+//     }
+//   }
+// }
+
+// #mc_container.security-center .iconinf-m {
+//   display: inline-block;
+//   width: 39px;
+//   height: 39px;
+//   border-radius: 50%;
+//   vertical-align: middle;
+//   background-repeat: no-repeat;
+//   cursor: pointer;
+//   background-image: url(@/assets/web_pgpc/iconinfo-m.png);
+//   box-shadow: 0 7px 13px rgba(194, 194, 192, 0.35);
+
+//   &.icon-info { @include icon-style(-5px, 254, 235, 107); }
+//   &.icon-pwd { @include icon-style(-58px, 87, 239, 235); }
+//   &.icon-secret { @include icon-style(-111px, 219, 133, 253); }
+//   &.icon-bank { @include icon-style(-164px, 100, 194, 253); }
+//   &.icon-moneypwd { @include icon-style(-217px, 221, 205, 120); }
+//   &.icon-google { @include icon-style(-271px, 255, 109, 124); }
+//   &.icon-phone { @include icon-style(-324px, 219, 133, 253); }
+//   &.icon-realname { @include icon-style(-375px, 255, 109, 124); }
+//   &.icon-vitualWallet { @include icon-style(-428px, 254, 235, 107); }
+//   &.icon-eWallet { @include icon-style(-640px, 254, 235, 107); }
+// }
+
+
+// #mc_container.security-center .iconinf-m {
+//   display: inline-block;
+//   width: 39px;
+//   height: 39px;
+//   border-radius: 50%;
+//   vertical-align: middle;
+//   background-repeat: no-repeat;
+//   cursor: pointer;
+//   background-image: url(images/iconinfo-m.062df726.png);
+//   box-shadow: 0 7px 13px rgba(194,194,192,.35)
+// }
+// #mc_container.security-center .iconinf-m.icon-info {
+//   background-position: -5px -5px
+// }
+// #mc_container.security-center .iconinf-m.icon-info.active {
+//   background-position: -238px -4px;
+//   box-shadow: 0 7px 13px rgba(254,235,107,.35)
+// }
+// #mc_container.security-center .iconinf-m.icon-info.active:hover {
+//   background-position: -471px -5px
+// }
+// #mc_container.security-center .iconinf-m.icon-info.active:active {
+//   background-position: -709px -5px!important
+// }
+// #mc_container.security-center .iconinf-m.icon-pwd {
+//   background-position: -5px -58px
+// }
+// #mc_container.security-center .iconinf-m.icon-pwd.active {
+//   background-position: -238px -58px;
+//   box-shadow: 0 7px 13px rgba(87,239,235,.35)
+// }
+// #mc_container.security-center .iconinf-m.icon-pwd.active:hover {
+//   background-position: -471px -58px
+// }
+// #mc_container.security-center .iconinf-m.icon-pwd.active:active {
+//   background-position: -709px -58px!important
+// }
+// #mc_container.security-center .iconinf-m.icon-secret {
+//   background-position: -5px -111px
+// }
+// #mc_container.security-center .iconinf-m.icon-secret.active {
+//   background-position: -238px -111px;
+//   box-shadow: 0 7px 13px rgba(219,133,253,.35)
+// }
+// #mc_container.security-center .iconinf-m.icon-secret.active:hover {
+//   background-position: -471px -111px
+// }
+// #mc_container.security-center .iconinf-m.icon-secret.active:active {
+//   background-position: -709px -111px!important
+// }
+// #mc_container.security-center .iconinf-m.icon-bank {
+//   background-position: -5px -164px
+// }
+// #mc_container.security-center .iconinf-m.icon-bank.active {
+//   background-position: -238px -164px;
+//   box-shadow: 0 7px 13px rgba(100,194,253,.35)
+// }
+// #mc_container.security-center .iconinf-m.icon-bank.active:hover {
+//   background-position: -471px -164px
+// }
+// #mc_container.security-center .iconinf-m.icon-bank.active:active {
+//   background-position: -709px -164px!important
+// }
+// #mc_container.security-center .iconinf-m.icon-moneypwd {
+//   background-position: -5px -217px
+// }
+// #mc_container.security-center .iconinf-m.icon-moneypwd.active {
+//   background-position: -238px -217px;
+//   box-shadow: 0 7px 13px rgba(221,205,120,.35)
+// }
+// #mc_container.security-center .iconinf-m.icon-moneypwd.active:hover {
+//   background-position: -471px -217px
+// }
+// #mc_container.security-center .iconinf-m.icon-moneypwd.active:active {
+//   background-position: -709px -217px!important
+// }
+// #mc_container.security-center .iconinf-m.icon-google {
+//   background-position: -5px -271px
+// }
+// #mc_container.security-center .iconinf-m.icon-google.active {
+//   background-position: -238px -271px;
+//   box-shadow: 0 7px 13px rgba(255,109,124,.35)
+// }
+// #mc_container.security-center .iconinf-m.icon-google.active:hover {
+//   background-position: -471px -271px
+// }
+// #mc_container.security-center .iconinf-m.icon-google.active:active {
+//   background-position: -709px -271px!important
+// }
+// #mc_container.security-center .iconinf-m.icon-phone {
+//   background-position: -5px -324px
+// }
+// #mc_container.security-center .iconinf-m.icon-phone.active {
+//   background-position: -238px -324px;
+//   box-shadow: 0 7px 13px rgba(219,133,253,.35)
+// }
+// #mc_container.security-center .iconinf-m.icon-phone.active:hover {
+//   background-position: -471px -324px
+// }
+// #mc_container.security-center .iconinf-m.icon-phone.active:active {
+//   background-position: -709px -324px!important
+// }
+// #mc_container.security-center .iconinf-m.icon-realname {
+//   background-position: -5px -377px
+// }
+// #mc_container.security-center .iconinf-m.icon-realname.active {
+//   background-position: -238px -375px;
+//   box-shadow: 0 7px 13px rgba(255,109,124,.35)
+// }
+// #mc_container.security-center .iconinf-m.icon-realname.active:hover {
+//   background-position: -471px -375px
+// }
+// #mc_container.security-center .iconinf-m.icon-realname.active:active {
+//   background-position: -709px -375px!important
+// }
+// #mc_container.security-center .iconinf-m.icon-vitualWallet {
+//   background-position: -5px -430px
+// }
+// #mc_container.security-center .iconinf-m.icon-vitualWallet.active {
+//   background-position: -238px -428px;
+//   box-shadow: 0 7px 13px rgba(254,235,107,.35)
+// }
+// #mc_container.security-center .iconinf-m.icon-vitualWallet.active:hover {
+//   background-position: -471px -428px
+// }
+// #mc_container.security-center .iconinf-m.icon-vitualWallet.active:active {
+//   background-position: -709px -428px!important
+// }
+// #mc_container.security-center .iconinf-m.icon-eWallet {
+//   background-position: -5px -640px
+// }
+// #mc_container.security-center .iconinf-m.icon-eWallet.active {
+//   background-position: -238px -640px;
+//   box-shadow: 0 7px 13px rgba(254,235,107,.35)
+// }
+// #mc_container.security-center .iconinf-m.icon-eWallet.active:hover {
+//   background-position: -471px -640px
+// }
+// #mc_container.security-center .iconinf-m.icon-eWallet.active:active {
+//   background-position: -709px -640px!important
+// }

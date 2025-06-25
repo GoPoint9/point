@@ -1,0 +1,20 @@
+.van-toast {
+	word-break: break-word !important;
+}
+
+.cg-default {
+	&.van-button {
+		font-weight: 700;
+		font-size: 30px;
+
+		.van-button__icon {
+			height: 100%;
+			display: flex;
+			align-items: center;
+
+			& > img {
+				height: 80%;
+			}
+		}
+	}
+}

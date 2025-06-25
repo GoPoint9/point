@@ -1,0 +1,397 @@
+// src/styles/deposit.scss
+
+// 定義全局變數
+$primary-color: #ff2f34; // 主色調（紅色）
+$secondary-color: #5076f3; // 次要色（藍色）
+$border-color: #efefef; // 邊框顏色
+$bg-light: #f7f7f7; // 淺色背景
+$shadow-light: 0 5px 30px 0 rgba(0, 0, 0, 0.08); // 淺陰影
+$radius: 6px; // 圓角
+$transition: transform 0.3s linear; // 過渡動畫
+
+// 隱藏垂直滾動條
+:deep(#deposit .ps__rail-y) {
+  display: none;
+}
+
+// 存款容器主樣式
+#deposit {
+  display: flex;
+  position: relative;
+
+  // 上傳框
+  .upload-box {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    height: 590px;
+    left: 15px;
+    top: 15px;
+    transform: translate(350px) scale(0);
+    transition: $transition;
+    will-change: auto;
+    overflow: hidden;
+    .img-wrap {
+      max-height: 590px;
+      position: relative;
+    }
+    &.img_in {
+      transform: translate(0) scale(1);
+    }
+    &.img_out {
+      transform: translate(350px) scale(0);
+    }
+  }
+
+  // 側邊導航欄
+  #depositTab {
+    width: 255px;
+    height: 620px;
+    padding-top: 22px;
+    position: relative;
+    background-color: $bg-light;
+    overflow-y: scroll !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    // 遮罩效果
+    &.show-mask::after {
+      content: '';
+      visibility: visible;
+      position: fixed;
+      bottom: 0;
+      left: 180px;
+      width: 246px;
+      height: 70px;
+      background-image: linear-gradient(to bottom, rgba(244, 244, 244, 0), #f4f4f4);
+    }
+
+    .nav-item {
+      width: 205px;
+      background-color: #fff;
+      padding: 10px;
+      box-shadow: $shadow-light;
+      border-radius: $radius;
+      border: solid 1px transparent;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+
+      .icon {
+        width: 40px;
+        height: 40px;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-image: url('@/assets/web_pgpc/deposit-default.png');
+        border-radius: $radius;
+        flex-shrink: 0;
+        margin: 3px 0;
+      }
+
+      .bankname {
+        color: #646464;
+        font-size: 14px;
+        margin-left: 9px;
+        > div {
+          line-height: 18px;
+        }
+        .rebate {
+          color: #f33;
+        }
+      }
+
+      &.active {
+        border-color: $primary-color;
+        &::after {
+          content: '';
+          position: absolute;
+          width: 19px;
+          height: 19px;
+          background: url('@/assets/icons/svg/Web/check.svg') no-repeat;
+          background-size: 100% 100%;
+          right: 0;
+          bottom: 0;
+        }
+      }
+
+      &.recommend::before {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 24px;
+        background: url('@/assets/web_pgpc/recommend.png') no-repeat;
+        background-size: 100% 100%;
+        right: 0;
+        top: 0;
+      }
+
+      // 支付方式圖標
+      // &[data-targetid='WCFQR'],
+      // &[data-targetid='WCNWAP'],
+      // &[data-targetid='WCWAP'],
+      // &[data-targetid='WECHAT'],
+      // &[data-targetid='WRS'],
+      // &[data-targetid='WT'] {
+      //   .icon { background-image: url('images/WECHAT.727b6ed5.png'); }
+      // }
+      // &[data-targetid='ALIFQR'],
+      // &[data-targetid='ALINWAP'],
+      // &[data-targetid='ALIPAY'],
+      // &[data-targetid='ALIWAP'],
+      // &[data-targetid='AT'],
+      // &[data-targetid='KAMI'] {
+      //   .icon { background-image: url('@/assets/web_pgpc/ALIPAY.857aa6df.png'); }
+      // }
+      // &[data-targetid='ALIPDD'] .icon {
+      //   background-image: url('images/ALIPDD.7ca8b13b.png');
+      // }
+      // &[data-targetid='BTC'] .icon {
+      //   background-image: url('@/assets/web_pgpc/btc.png');
+      // }
+
+      // 其他支付方式圖標略（結構相同，可按需展開）
+    }
+  }
+
+  // 存款內容容器
+  .deposit_container {
+    width: 855px;
+    border-left: 1px solid $border-color;
+
+    .deposit_title {
+      width: 100%;
+      border-bottom: 1px solid $border-color;
+      height: 47px;
+      line-height: 46px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 60px 0 30px;
+
+      .txt {
+        color: #000;
+        font-size: 16px;
+        font-weight: 400;
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          width: 5px;
+          height: 15px;
+          background-color: #23e63a;
+          top: 50%;
+          margin-top: -7.5px;
+          left: -13px;
+        }
+      }
+
+      .deposit-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .deposit-records,
+        .deposit-teaching {
+          height: 34px;
+          min-width: 34px;
+          line-height: 30px;
+          color: $secondary-color;
+          border-radius: 50px;
+          border: 2px solid rgba(80, 118, 243, 0.3);
+          font-size: 14px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 0 10px;
+          position: relative;
+
+          .book-icon {
+            width: 20px;
+            height: 20px;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+          }
+        }
+
+        .deposit-records {
+          .book-icon {
+            background-image: url('@/assets/icons/svg/Web/deposit-record.svg');
+          }
+
+          .cashIn-count {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            color: #fff;
+            font-size: 12px;
+            right: -9px;
+            top: -6px;
+            background: #ec2529;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 500;
+            z-index: 1;
+          }
+        }
+
+        .deposit-teaching {
+          border-radius: 17px;
+
+          .book-icon {
+            background-image: url('@/assets/web_pgpc/help.png');
+          }
+        }
+      }
+    }
+
+    .QPayment-content {
+      display: flex;
+      margin-left: 16px;
+      flex-direction: column;
+    }
+
+    .rowTwo-wrp {
+      min-width: 430px;
+
+      .po-middle:first-child {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        .po-middleL {
+          min-width: 110px;
+        }
+      }
+    }
+
+    .copy {
+      margin-left: 12px;
+      margin-bottom: 16px;
+    }
+
+    .copy-msg {
+      width: initial;
+      min-width: 80px;
+    }
+  }
+
+  // 存款包裹容器
+  #deposit_wrp {
+    width: 855px;
+
+    .bankMessage {
+      display: inline-block;
+      max-width: 725px;
+      background-image: linear-gradient(90deg, rgba(255, 253, 251, 0.2) 0, #ffe7d6 100%),
+        linear-gradient(#f5f5f5, #f5f5f5);
+      background-blend-mode: normal, normal;
+      border-radius: 10px;
+      border: solid 1px #f9dacb;
+      font-size: 14px;
+      line-height: 18px;
+      color: $primary-color;
+      padding: 10px 15px;
+      margin: 10px 0 20px;
+
+      a {
+        word-wrap: break-word;
+      }
+    }
+
+    .deposit_no_banklist {
+      padding: 312px 0 150px;
+      text-align: center;
+      line-height: 24px;
+      font-size: 24px;
+      color: #7a7070;
+      background: url('@/assets/web_pgpc/deposit_no_banklist.png') no-repeat center 52px;
+      background-size: 504px auto;
+    }
+
+    .err-msg .the-err-msg {
+      word-wrap: break-word;
+      max-width: 100%;
+      line-height: 1.2;
+      padding: 6px;
+      white-space: pre-line;
+    }
+  }
+
+  // QQ 存款特定樣式
+  #postDepositQQ {
+    .receipt-wrap {
+      display: none;
+    }
+
+    .scroll-wrap.has-receipt {
+      display: flex;
+      justify-content: space-between;
+
+      .deposit-form {
+        max-width: 500px;
+
+        > div {
+          display: table-row;
+          width: auto;
+
+          .deposit-form-label {
+            display: table-cell;
+            width: auto;
+          }
+        }
+      }
+
+      .receipt-wrap {
+        width: 370px;
+        display: block;
+
+        .upload_image {
+          text-align: left;
+        }
+      }
+    }
+
+    .submitTable.button-white {
+      background-color: #fff;
+      color: #747474;
+      box-shadow: 0 0 10px #e4e1e1;
+
+      &:hover {
+        background-color: initial;
+        color: #dedede;
+      }
+    }
+
+    .receipt-btn {
+      margin-left: 10px;
+    }
+  }
+
+  .button.btn-submit {
+    min-width: 98px;
+    width: initial;
+    word-break: break-all;
+  }
+
+  .amount_deposit_info {
+    display: block;
+    color: red;
+    white-space: break-spaces;
+    min-height: 30px;
+    word-wrap: break-word;
+    padding-bottom: 15px;
+
+    .info_text {
+      margin-left: 6px;
+    }
+  }
+}

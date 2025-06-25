@@ -1,0 +1,16 @@
+{
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+  },
+  "i18n-ally.localesPaths": [
+    "src/languages/modules",
+    "src/languages/modules/web-pgpc"
+  ],
+  "i18n-ally.enabledParsers": ["ts", "json"],
+  "i18n-ally.displayLanguage": "zh", // 預設顯示的語系
+  "i18n-ally.sourceLanguage": "zh",
+  "i18n-ally.keystyle": "nested",
+  // "i18n-ally.pathMatcher": "{locale}.ts",
+  // "i18n-ally.keystyle": "nested",
+}

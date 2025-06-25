@@ -1,0 +1,253 @@
+@use 'sass:map';
+@use 'sass:list';
+
+// 定義顏色變量
+$shadow-colors: (
+  'info': rgba(254,235,107,.35),
+  'pwd': rgba(87,239,235,.35),
+  'secret': rgba(219,133,253,.35),
+  'bank': rgba(100,194,253,.35),
+  'moneypwd': rgba(221,205,120,.35),
+  'google': rgba(255,109,124,.35),
+  'phone': rgba(219,133,253,.35),
+  'realname': rgba(255,109,124,.35),
+  'eWallet': rgba(254,235,107,.35),
+  'vitualWallet': rgba(254,235,107,.35),
+  'logout': rgba(255,109,124,.35)
+);
+
+// 定義 icon 位置 map
+$icon-positions: (
+  'info': (-11px, -7px),
+  'pwd': (-11px, -95px),
+  'secret': (-11px, -182px),
+  'bank': (-12px, -269px),
+  'moneypwd': (-11px, -356px),
+  'google': (-11px, -443px),
+  'phone': (-11px, -529px),
+  'realname': (-11px, -615px),
+  'eWallet': (-11px, -961px),
+  'vitualWallet': (-11px, -701px)
+);
+// 定義 active 狀態的 mixin
+@mixin active-states($type) {
+  &.active {
+    background-position: -245px list.nth(map.get($icon-positions, $type), 2);
+    box-shadow: 9px 9px 21px map.get($shadow-colors, $type);
+    &:hover {
+      background-position: -474px list.nth(map.get($icon-positions, $type), 2);
+    }
+    &:active {
+      background-position: -713px list.nth(map.get($icon-positions, $type), 2) !important;
+    }
+  }
+}
+
+#mc_container.security-center {
+  .iconinfo {
+    display: inline-block;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-image: url(@/assets/web_pgpc/iconinfo.png);
+    box-shadow: 9px 9px 21px rgba(194,194,192,.35);
+
+    // 動態生成每個 icon 的樣式
+    @each $icon, $position in $icon-positions {
+      &.icon-#{$icon} {
+        background-position: list.nth($position, 1) list.nth($position, 2);
+        @include active-states($icon);
+      }
+    }
+
+    // 特殊處理 icon-logout
+    &.icon-logout {
+      background-image: url(@/assets/web_pgpc/icon-logout.png);
+      background-size: 55px 55px;
+      &.active {
+        box-shadow: 9px 9px 21px map.get($shadow-colors, 'logout');
+      }
+    }
+  }
+
+  // 小圖標樣式
+  $small-icons: (
+    'danger': url(@/assets/web_pgpc/icons-danger.png),
+    'checked-green': url(@/assets/web_pgpc/icons-checked-green.png)
+  );
+  @each $icon, $bg in $small-icons {
+    .icons-#{$icon} {
+      display: inline-block;
+      width: 18px;
+      vertical-align: sub;
+      height: 18px;
+      background: $bg no-repeat;
+    }
+  }
+}
+
+// #mc_container.security-center .iconinfo {
+//   display: inline-block;
+//   width: 55px;
+//   height: 55px;
+//   border-radius: 50%;
+//   vertical-align: middle;
+//   background-repeat: no-repeat;
+//   cursor: pointer;
+//   background-image: url(@/assets/web_pgpc/iconinfo.png);
+//   box-shadow: 9px 9px 21px rgba(194,194,192,.35)
+// }
+// #mc_container.security-center .iconinfo.icon-info {
+//   background-position: -11px -7px
+// }
+// #mc_container.security-center .iconinfo.icon-info.active {
+//   background-position: -245px -7px;
+//   box-shadow: 9px 9px 21px rgba(254,235,107,.35)
+// }
+// #mc_container.security-center .iconinfo.icon-info.active:hover {
+//   background-position: -474px -7px
+// }
+// #mc_container.security-center .iconinfo.icon-info.active:active {
+//   background-position: -713px -7px!important
+// }
+// #mc_container.security-center .iconinfo.icon-pwd {
+//   background-position: -11px -95px
+// }
+// #mc_container.security-center .iconinfo.icon-pwd.active {
+//   background-position: -245px -95px;
+//   box-shadow: 9px 9px 21px rgba(87,239,235,.35)
+// }
+// #mc_container.security-center .iconinfo.icon-pwd.active:hover {
+//   background-position: -474px -95px
+// }
+// #mc_container.security-center .iconinfo.icon-pwd.active:active {
+//   background-position: -713px -95px!important
+// }
+// #mc_container.security-center .iconinfo.icon-secret {
+//   background-position: -11px -182px
+// }
+// #mc_container.security-center .iconinfo.icon-secret.active {
+//   background-position: -245px -182px;
+//   box-shadow: 9px 9px 21px rgba(219,133,253,.35)
+// }
+// #mc_container.security-center .iconinfo.icon-secret.active:hover {
+//   background-position: -474px -182px
+// }
+// #mc_container.security-center .iconinfo.icon-secret.active:active {
+//   background-position: -713px -182px!important
+// }
+// #mc_container.security-center .iconinfo.icon-bank {
+//   background-position: -12px -269px
+// }
+// #mc_container.security-center .iconinfo.icon-bank.active {
+//   background-position: -245px -269px;
+//   box-shadow: 9px 9px 21px rgba(100,194,253,.35)
+// }
+// #mc_container.security-center .iconinfo.icon-bank.active:hover {
+//   background-position: -474px -269px
+// }
+// #mc_container.security-center .iconinfo.icon-bank.active:active {
+//   background-position: -713px -269px!important
+// }
+// #mc_container.security-center .iconinfo.icon-moneypwd {
+//   background-position: -11px -356px
+// }
+// #mc_container.security-center .iconinfo.icon-moneypwd.active {
+//   background-position: -245px -356px;
+//   box-shadow: 9px 9px 21px rgba(221,205,120,.35)
+// }
+// #mc_container.security-center .iconinfo.icon-moneypwd.active:hover {
+//   background-position: -474px -356px
+// }
+// #mc_container.security-center .iconinfo.icon-moneypwd.active:active {
+//   background-position: -713px -356px!important
+// }
+// #mc_container.security-center .iconinfo.icon-google {
+//   background-position: -11px -443px
+// }
+// #mc_container.security-center .iconinfo.icon-google.active {
+//   background-position: -245px -443px;
+//   box-shadow: 9px 9px 21px rgba(255,109,124,.35)
+// }
+// #mc_container.security-center .iconinfo.icon-google.active:hover {
+//   background-position: -474px -443px
+// }
+// #mc_container.security-center .iconinfo.icon-google.active:active {
+//   background-position: -713px -443px!important
+// }
+// #mc_container.security-center .iconinfo.icon-phone {
+//   background-position: -11px -529px
+// }
+// #mc_container.security-center .iconinfo.icon-phone.active {
+//   background-position: -245px -529px;
+//   box-shadow: 9px 9px 21px rgba(219,133,253,.35)
+// }
+// #mc_container.security-center .iconinfo.icon-phone.active:hover {
+//   background-position: -474px -529px
+// }
+// #mc_container.security-center .iconinfo.icon-phone.active:active {
+//   background-position: -713px -529px!important
+// }
+// #mc_container.security-center .iconinfo.icon-realname {
+//   background-position: -11px -615px
+// }
+// #mc_container.security-center .iconinfo.icon-realname.active {
+//   background-position: -245px -615px;
+//   box-shadow: 9px 9px 21px rgba(255,109,124,.35)
+// }
+// #mc_container.security-center .iconinfo.icon-realname.active:hover {
+//   background-position: -474px -615px
+// }
+// #mc_container.security-center .iconinfo.icon-realname.active:active {
+//   background-position: -713px -615px!important
+// }
+// #mc_container.security-center .iconinfo.icon-eWallet {
+//   background-position: -11px -961px
+// }
+// #mc_container.security-center .iconinfo.icon-eWallet.active {
+//   background-position: -245px -961px;
+//   box-shadow: 9px 9px 21px rgba(254,235,107,.35)
+// }
+// #mc_container.security-center .iconinfo.icon-eWallet.active:hover {
+//   background-position: -474px -961px
+// }
+// #mc_container.security-center .iconinfo.icon-eWallet.active:active {
+//   background-position: -713px -961px!important
+// }
+// #mc_container.security-center .iconinfo.icon-vitualWallet {
+//   background-position: -11px -701px
+// }
+// #mc_container.security-center .iconinfo.icon-vitualWallet.active {
+//   background-position: -245px -701px;
+//   box-shadow: 9px 9px 21px rgba(254,235,107,.35)
+// }
+// #mc_container.security-center .iconinfo.icon-vitualWallet.active:hover {
+//   background-position: -474px -701px
+// }
+// #mc_container.security-center .iconinfo.icon-vitualWallet.active:active {
+//   background-position: -713px -701px!important
+// }
+// #mc_container.security-center .iconinfo.icon-logout {
+//   background-image: url(@/assets/web_pgpc/icon-logout.png);
+//   background-size: 55px 55px
+// }
+// #mc_container.security-center .iconinfo.icon-logout.active {
+//   box-shadow: 9px 9px 21px rgba(255,109,124,.35)
+// }
+// #mc_container.security-center .icons-danger {
+//   display: inline-block;
+//   width: 18px;
+//   vertical-align: sub;
+//   height: 18px;
+//   background: url(@/assets/web_pgpc/icons-danger.png) no-repeat
+// }
+// #mc_container.security-center .icons-checked-green {
+//   display: inline-block;
+//   width: 18px;
+//   vertical-align: sub;
+//   height: 18px;
+//   background: url(@/assets/web_pgpc/icons-checked-green.png) no-repeat
+// }

@@ -1,0 +1,105 @@
+@mixin pagination_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --van-pagination-background: transparent;
+  --van-pagination-item-disabled-background: transparent;
+
+  .van-pagination__item {
+    color: #fff;
+    > li {
+      width: 34px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &--page {
+      margin: 0 3px;
+      line-height: 24px;
+
+      // > {
+      //   color: #f5df4b;
+      // }
+    }
+
+    &--active {
+      color: #f5df4b;
+      background-color: transparent;
+    }
+    // &--prev { }
+    // &--next { }
+  }
+
+  // .page-item {
+  //   margin: 0 3px;
+  //   line-height: 24px;
+  // }
+  // .page-item.active .page-link-item {
+  //   border: none;
+  //   color: #f5df4b;
+  // }
+  // .page-link-item {
+  //   display: block;
+  //   font-size: 14px;
+  //   color: #fff;
+  //   background: transparent;
+  //   border: 1px solid transparent;
+  //   letter-spacing: 0;
+  //   border-radius: 2px;
+  // }
+  // .page-link-item,
+  // li:first-child .page-link-item,
+  // li:last-child .page-link-item {
+  //   width: 34px;
+  //   height: 24px;
+  //   line-height: 24px;
+  //   text-align: center;
+  // }
+  // .page-link-item.break-view-link {
+  //   border: none;
+  // }
+
+  .next-item,
+  .prev-item {
+    width: 34px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .next-link-item,
+  .prev-link-item {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+  }
+  .prev-link-item {
+    transform: rotate(-45deg);
+  }
+  .next-link-item {
+    transform: rotate(135deg);
+  }
+  .next-item:hover .next-link-item,
+  .prev-item:hover .prev-link-item {
+    border-color: #da394f;
+  }
+  .page-item:hover > a {
+    border: none;
+    color: #fff;
+    background-color: #da394f;
+  }
+}
+
+// div => paginate-wrapper
+// ul => pagination-container
+// 競品
+// .paginate-wrapper .pagination-container {
+//   @include pagination_container;
+// }
+.paginate-wrapper .van-pagination__items {
+  @include pagination_container;
+}
+

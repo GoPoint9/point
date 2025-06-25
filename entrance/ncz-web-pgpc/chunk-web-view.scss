@@ -1,0 +1,119 @@
+
+.mcHelp-wrap {
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  color: #909090;
+  background: #fff;
+  .help-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px
+  }
+  .help-title {
+    flex: 1
+  }
+  .mcHelp-menu {
+    width: 265px;
+    height: 100%;
+    padding: 20px;
+    overflow-y: auto
+  }
+  .mcHelp-menu .title {
+    display: flex;
+    align-items: center;
+    min-height: 50px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    width: 225px;
+    text-align: left;
+    padding: 4px 20px;
+    border-radius: 10px;
+    cursor: pointer
+  }
+  .mcHelp-menu .title span {
+    flex: 1;
+    line-height: 1.5
+  }
+  .mcHelp-menu .title.active,
+  .mcHelp-menu .title:hover {
+    background-color: #ff2351;
+    box-shadow: 1px 1px 8px rgba(255,35,81,.8);
+    color: #fff
+  }
+  .mcHelp-menu .children-list {
+    overflow: hidden;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in
+  }
+  .mcHelp-menu .children-list.on {
+    max-height: 1000px
+  }
+  .mcHelp-menu .children-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 2px 0 2px 50px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #5e5e5e;
+    cursor: pointer
+  }
+  .mcHelp-menu .children-item:before {
+    display: none;
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: #ff2351
+  }
+  .mcHelp-menu .children-item.active,
+  .mcHelp-menu .children-item:hover {
+    color: #ff2351
+  }
+  .mcHelp-menu .children-item.active:before,
+  .mcHelp-menu .children-item:hover:before {
+    display: block
+  }
+  .mcHelp-content {
+    flex: 1;
+    height: 100%;
+    background: #f5f5f5;
+    padding: 40px;
+    overflow-y: auto
+  }
+  .mcHelp-content * {
+    margin-bottom: 15px
+  }
+  .mcHelp-content table {
+    width: 97%;
+    border-collapse: collapse;
+    border: 1px solid #656565;
+    margin-left: 30px
+  }
+  .mcHelp-content table td,
+  .mcHelp-content table th {
+    padding: 10px;
+    border: 1px solid #656565
+  }
+  .mcHelp-content .content-title {
+    color: #404040;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 30px
+  }
+  .mcHelp-content .content {
+    background-color: #fff;
+    border-radius: 7px;
+    padding: 25px
+  }
+}

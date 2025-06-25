@@ -1,0 +1,3 @@
+<template>
+  have bug
+</template>

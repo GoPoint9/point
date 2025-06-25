@@ -1,0 +1,19 @@
+{
+	"manifest_version": 2,
+	"name": "BDG",
+	"version": "1.2",
+	"display": "standalone",
+	"background_color": "#fff",
+	"description": "BDG",
+	"icons": [
+		{
+			"src": "/manifest/bdggame@192.png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "/manifest/bdggame@512.png",
+			"sizes": "512x512"
+		}
+	],
+	"start_url": "/#/"
+}
