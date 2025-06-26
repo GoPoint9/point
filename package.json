@@ -16,9 +16,7 @@
 		"type-check": "vue-tsc --noEmit",
 		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
 		"generate-ts-files": "node chagelanguage.js",
-		"build:idaman002": "cross-env NODE_ENV=idaman002 npx vite build",
-		"build:ncz-web-pgpc": "cross-env NODE_ENV=ncz-web-pgpc npx vite build",
-		"build:bdg000": "cross-env NODE_ENV=idaman npx vite build"
+		"build:ncz-web-pgpc": "cross-env NODE_ENV=ncz-web-pgpc npx vite build"
 	},
 	"dependencies": {
 		"@fingerprintjs/fingerprintjs": "^4.4.3",

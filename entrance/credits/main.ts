@@ -5,10 +5,13 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import App from './App.vue'
 import router from '@/router'
 import tools from '@/plugins/tools'
-import pointObj from '@/utils/point'
-if (import.meta.env.VITE_POINT) {
-  pointObj[import.meta.env.VITE_POINT]()
-}
+
+/** 埋點 */
+// import pointObj from '@/utils/point'
+// if (import.meta.env.VITE_POINT) {
+//   pointObj[import.meta.env.VITE_POINT]()
+// }
+
 router.addRoute({
   path: '/',
   name: 'home',

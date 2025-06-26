@@ -69,13 +69,12 @@ onMounted(async () => {
 })
 
 const h5Banners = [
-  { bannerUrl: '2.jpg', url: '/h5/path/1' },
-  { bannerUrl: '2.jpg', url: '/h5/path/2' },
-  { bannerUrl: '2.jpg', url: '/h5/path/3' },
+  { bannerUrl: 'h5_1.jpg', url: '/h5/path/1' },
+  { bannerUrl: 'h5_2.jpg', url: '/h5/path/2' },
 ]
 const webBanners = [
-  { bannerUrl: '1.jpg', url: '/web/path/1' },
-  { bannerUrl: '1.jpg', url: '/web/path/2' },
+  { bannerUrl: 'web_1.jpg', url: '/web/path/1' },
+  { bannerUrl: 'web_2.jpg', url: '/web/path/2' },
 ]
 
 const breakpoints = useBreakpoints({

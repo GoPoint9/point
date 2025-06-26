@@ -133,8 +133,23 @@ export const getIcons = (path: string, name: string, ext: string = 'png', dir: s
  * @return {string}
  */
 export const getIconsPublic = (path: string, name: string, ext: string = 'png', dir: string = 'icons'): string => {
-  return assets[`../assets/${dir}/${path}/${name}.${ext}`] || ''
+  // return assets[`../assets/${dir}/${path}/${name}.${ext}`] || ''
   // return new URL(`../assets/${dir}/${path}/${name}.${ext}`, import.meta.url).href
+
+  const imagePath = `../assets/${dir}/${path}/${name}.${ext}`
+
+  // console.log('正在嘗試解析此圖片路徑:', imagePath)
+
+  try {
+    const imageUrl = new URL(imagePath, import.meta.url).href
+
+    // console.log('成功解析為 Vite URL:', imageUrl)
+
+    return imageUrl
+  } catch (e) {
+    console.error('圖片解析失敗！請檢查上面的路徑是否正確。', e)
+    return '' // 返回空字串
+  }
 }
 // /**
 //  * @description 获取图标url

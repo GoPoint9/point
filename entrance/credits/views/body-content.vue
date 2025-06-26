@@ -75,14 +75,16 @@
           :class="{ active: activeTab === 'All' }"
           @click="selectProduct('All', All)"
         >顯示全部</a>
-        <!-- <a
+        <a
           class="btn mt-3"
-          href="/Product/Category/c37e00ab-dfdb-4cb9-8a52-297acbe9210d"
-        >Steam</a> -->
-        <!-- <a
+          :class="{ active: activeTab === 'Steam' }"
+          @click="selectProduct('Steam', Steam)"
+        >Steam</a>
+        <a
           class="btn mt-3"
-          href="/Product/Category/3c74136b-b63e-4835-8b34-0d94b9b9403c"
-        >PlayStation</a> -->
+          :class="{ active: activeTab === 'PlayStation' }"
+          @click="selectProduct('PlayStation', PlayStation)"
+        >PlayStation</a>
         <a
           class="btn mt-3"
           :class="{ active: activeTab === 'MyCard' }"
@@ -97,24 +99,25 @@
           :class="{ active: activeTab === 'Gash' }"
           @click="selectProduct('Gash', Gash)"
         >Gash</a>
-        <a
+        <!-- <a
           class="btn mt-3"
           :class="{ active: activeTab === 'Line' }"
           @click="selectProduct('LINE', Line)"
-        >LINE</a>
-        <a
+        >LINE</a> -->
+        <!-- <a
           class="btn mt-3"
           :class="{ active: activeTab === 'Xbox' }"
           @click="selectProduct('Xbox', Xbox)"
-        >Xbox</a>
+        >Xbox</a> -->
         <!-- <a
           class="btn mt-3"
           href="/Product/Category/8695812b-6d28-4f20-a665-6cd3b541b3b6"
         >PartyTu</a> -->
-        <!-- <a
+        <a
           class="btn mt-3"
-          href="/Product/Category/4f342006-150b-4360-be57-795486e2cc39"
-        >iTunes</a> -->
+          :class="{ active: activeTab === 'iTunes' }"
+          @click="selectProduct('iTunes', iTunes)"
+        >iTunes</a>
       </nav>
 
       <section v-for="(item, index) in productMap" :key="index" class="mb-3">
@@ -128,10 +131,16 @@
               data-name="[美國]App Store &amp; iTunes 禮品卡 2 美金"
               data-price="70"
             >
-              <a class="card-body" href="/Product/3dde91ff-0d53-4d7f-8fe2-fbe26ee6b37a">
+              <a class="card-body" href="javascript:void(0)">
                 <img
-                  :src="getIconsPublic('credits', item.logo)"
-                  alt="2260d5167bb842a689c8c8787ec58c36.jpg"
+                  :src="
+                    getIconsPublic(
+                      'credits',
+                      item.logo.split('.')[0],
+                      item.logo.split('.')[1]
+                    )
+                  "
+                  :alt="item.logo"
                   class="img-fluid"
                 >
                 <h3 class="card-title" title="[美國]App Store &amp; iTunes 禮品卡 2 美金">
@@ -140,7 +149,7 @@
               </a>
               <div class="card-footer cart-action">
                 <span class="d-inline-block mt-md-2">
-                  {{ item.price }}
+                  ${{ item.price }}
                   <span class="count-container"> x <span class="count">0</span> </span>
                 </span>
                 <div class="float-md-right mt-2">
@@ -423,9 +432,6 @@ const getGameList = async () => {
     hotData.value = [...platformList, ...clicksTopList, ...clicksVideoTopList]
   }
 }
-const G0_back = () => {
-  router.push('/')
-}
 
 const Gash = [
   {
@@ -433,29 +439,29 @@ const Gash = [
     title: 'Gash Point 點數卡',
     itemArr: [
       {
-        title: 'Gash Point 點數 30 元',
-        logo: 'mycard_30',
-        price: 30,
-      },
-      {
         title: 'Gash Point 點數 50 元',
-        logo: 'mycard_30',
+        logo: 'gash_50.png',
         price: 50,
       },
       {
-        title: 'Gash Point 點數 90 元',
-        logo: 'mycard_30',
-        price: 90,
+        title: 'Gash Point 點數 100 元',
+        logo: 'gash_100.png',
+        price: 100,
       },
       {
         title: 'Gash Point 點數 150 元',
-        logo: 'mycard_30',
+        logo: 'gash_150.png',
         price: 150,
       },
       {
-        title: 'Gash Point 點數 170 元',
-        logo: 'mycard_30',
-        price: 170,
+        title: 'Gash Point 點數 300 元',
+        logo: 'gash_300.png',
+        price: 300,
+      },
+      {
+        title: 'Gash Point 點數 500 元',
+        logo: 'gash_500.png',
+        price: 500,
       },
     ],
   },
@@ -468,27 +474,27 @@ const MyCard = [
     itemArr: [
       {
         title: 'MyCard 點數 30 元',
-        logo: 'mycard_30',
+        logo: 'mycard_30.png',
         price: 30,
       },
       {
         title: 'MyCard 點數 50 元',
-        logo: 'mycard_30',
+        logo: 'mycard_50.png',
         price: 50,
       },
       {
         title: 'MyCard 點數 90 元',
-        logo: 'mycard_30',
+        logo: 'mycard_90.png',
         price: 90,
       },
       {
         title: 'MyCard 點數 150 元',
-        logo: 'mycard_30',
+        logo: 'mycard_150.png',
         price: 150,
       },
       {
         title: 'MyCard 點數 170 元',
-        logo: 'mycard_30',
+        logo: 'mycard_170.png',
         price: 170,
       },
     ],
@@ -563,7 +569,99 @@ const Xbox = [
   },
 ]
 
-const All = [...MyCard, ...Gash, ...Line, ...Xbox]
+const Steam = [
+  {
+    tab: 'Steam',
+    title: 'Steam 錢包儲值碼',
+    itemArr: [
+      {
+        title: 'Steam 100 元',
+        logo: 'steam_100.jpg',
+        price: 100,
+      },
+      {
+        title: 'Steam 150 元',
+        logo: 'steam_150.jpg',
+        price: 150,
+      },
+      {
+        title: 'Steam 200 元',
+        logo: 'steam_200.jpg',
+        price: 200,
+      },
+      {
+        title: 'Steam 300 元',
+        logo: 'steam_300.jpg',
+        price: 300,
+      },
+      {
+        title: 'Steam 350 元',
+        logo: 'steam_350.jpg',
+        price: 350,
+      },
+    ],
+  },
+]
+
+const PlayStation = [
+  {
+    tab: 'PlayStation',
+    title: 'PSN 點數卡',
+    itemArr: [
+      {
+        title: 'PSN 點數 300 元',
+        logo: 'psn_300.jpg',
+        price: 300,
+      },
+      {
+        title: 'PSN 點數 500 元',
+        logo: 'psn_500.jpg',
+        price: 500,
+      },
+      {
+        title: 'PSN 點數 800 元',
+        logo: 'psn_800.jpg',
+        price: 800,
+      },
+      {
+        title: 'PSN 點數 1000 元',
+        logo: 'psn_1000.jpg',
+        price: 1000,
+      },
+    ],
+  },
+]
+
+const iTunes = [
+  {
+    tab: 'iTunes',
+    title: '[美國]iTunes 禮品卡',
+    itemArr: [
+      {
+        title: '[美國]App Store & iTunes 禮品卡 2 美金',
+        logo: 'itunes_70.jpg',
+        price: 70,
+      },
+      {
+        title: '[美國]App Store & iTunes 禮品卡 3 美金',
+        logo: 'itunes_105.jpg',
+        price: 105,
+      },
+      {
+        title: '[美國]App Store & iTunes 禮品卡 4 美金',
+        logo: 'itunes_140.jpg',
+        price: 140,
+      },
+      {
+        title: '[美國]App Store & iTunes 禮品卡 5 美金',
+        logo: 'itunes_170.jpg',
+        price: 170,
+      },
+    ],
+  },
+]
+
+const All = [...Steam, ...PlayStation, ...MyCard, ...Gash, ...iTunes]
 
 const activeTab = ref('')
 const productMap = ref([])

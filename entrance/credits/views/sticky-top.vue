@@ -12,7 +12,7 @@
       <div class="container">
         <a href="javascript:void(0)" class="navbar-brand">
           <img
-            src="https://cdn.tecyt.com/img/epplogo/logo_ep-rectangle-whandbk-nobg-sm.png"
+            src="@/assets/icons/credits/GoPoint.png"
             height="48"
             title="Easy Point"
             alt="Easy Point logo"
@@ -80,3 +80,7 @@
     </div>
   </nav>
 </template>
+
+<script lang="ts">
+
+</script>
